@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 
-model = joblib.load('model.pkl')
+model = joblib.load('placement_pipeline.pkl')
 
 st.set_page_config(page_title="Placement Predictor", layout="wide")
 
@@ -165,19 +165,19 @@ with st.form("placement_form"):
 
 if submit_button:
     input_data = pd.DataFrame({
-        'gender': 1 if gender == 'Male' else 0,
-        'ssc_p': ssc_p,
-        'ssc_b': 1 if ssc_b == 'CBSE' else 0,
-        'hsc_p': hsc_p,
-        'hsc_b': 1 if hsc_b == 'CBSE' else 0,
-        'hsc_s': {'Science and Technology': 2, 'Commerce and Management': 1, 'Arts': 0}[hsc_s],
-        'degree_p': degree_p,
-        'degree_t': {'Science and Technology': 2, 'Commerce and Management': 1, 'Others': 0}[degree_t],
-        'workex': 1 if workex == 'Yes' else 0,
-        'etest_p': etest_p,
-        'specialisation': 1 if specialisation == 'Marketing and HR' else 0,
-        'mba_p': mba_p
-    }, index=[0])
+        "gender": ["M" if gender == "Male" else "F"],
+        "ssc_p": [ssc_p],
+        "ssc_b": ["Central" if ssc_b == "CBSE" else "Others"],
+        "hsc_p": [hsc_p],
+        "hsc_b": ["Central" if hsc_b == "CBSE" else "Others"],
+        "hsc_s": ["Science" if hsc_s == "Science and Technology" else "Commerce" if hsc_s == "Commerce and Management" else "Arts"],
+        "degree_p": [degree_p],
+        "degree_t": ["Sci&Tech" if degree_t == "Science and Technology" else "Comm&Mgmt" if degree_t == "Commerce and Management" else "Others"],
+        "workex": [workex],
+        "etest_p": [etest_p],
+        "specialisation": ["Mkt&HR" if specialisation == "Marketing and HR" else "Mkt&Fin"],
+        "mba_p": [mba_p]
+    })
 
     pred = model.predict(input_data)[0]
     prob = model.predict_proba(input_data)[0][1]
