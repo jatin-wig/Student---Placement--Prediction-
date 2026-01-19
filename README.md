@@ -2,6 +2,9 @@
 
 A professional web application that predicts student placement outcomes using a **Logistic Regression** machine learning model, trained on academic and background data.
 
+## Demo Video
+[![Watch the video](https://img.youtube.com/vi/9r151tjA4eg/hqdefault.jpg)](https://youtu.be/9r151tjA4eg)
+
 ## Features
 
 - Predicts whether a student is likely to be placed.
@@ -32,7 +35,32 @@ A professional web application that predicts student placement outcomes using a 
 - E-test Score
 - MBA Specialisation & Percentage
 
+# Setup Instructions
+
+## 1) Clone the Repository
+```bash
+
+git clone https://github.com/jatin-wig/Student---Placement--Prediction-.git
+```
+
+## 2) Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+## 3) Run the App
+```bash
+streamlit run app.py
+ ```
+or 
+```bash
+python -m streamlit run app.py 
+```
+
 ## Demo
 You can access the live application by visiting the following link:
 [View](https://student-placement-prediction-jatin-wig.streamlit.app/)
+
+# Built by Jatin Wig
+### GitHub: https://github.com/jatin-wig
 
